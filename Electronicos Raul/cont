@@ -1,0 +1,37 @@
+import tkinter as tk
+from tkinter import messagebox
+import serial
+import threading
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.animation import FuncAnimation
+
+class App:
+    def __init__(self, root);
+        self.root = root
+        self.root.title("Grafica led")
+
+        self.ser = None
+        self.puerto = "COM3" #el que corresponda
+        self.continuar = False
+
+        self.x_data = [] #tiempo
+        self-y_data = [] #amplitud
+
+        self.frame = tk.Frame(root)
+        self.frame.pack(pady=10)
+
+        self.btn_inicio = tk.Button(self.frame, text="INICIAR", command=self.iniciar, bg="green", fg="white")
+        self.btn_inicio.pack(side=tk.LEFT, padx=5)
+
+        self.btn_stop = tk.Button(self.frame, text="DETENER", command=self.detener, bg="red", fg="white")
+        self.btn_stop.pack(side=tk.LEFT, padx=5)
+
+        self.fig, self.ax = plt.subplots(figsize=(5, 3), dpi=100)
+        self.line, = self.ax.step([][], where="post", color="blue")
+
+
+
+
+
+
